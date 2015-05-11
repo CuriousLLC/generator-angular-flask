@@ -1,14 +1,17 @@
-python virtualenv.py flask
-flask/bin/pip install setuptools --no-use-wheel --upgrade
-flask/bin/pip install flask==0.9
+# Updated for Python 3 support
+# ./install.sh -p /path/to/python3 --no-setuptools
+
+python virtualenv.py $@ flask
+if [ ! -f flask/bin/pip ]; then
+  flask/bin/python get-pip.py
+fi
+
+flask/bin/pip install setuptools --upgrade
+flask/bin/pip install flask==0.10.1
 flask/bin/pip install flask-login
-flask/bin/pip install flask-openid
-flask/bin/pip install flask-mail==0.7.6
-flask/bin/pip install sqlalchemy==0.7.9
-flask/bin/pip install flask-sqlalchemy==0.16
-flask/bin/pip install sqlalchemy-migrate==0.7.2
-flask/bin/pip install flask-whooshalchemy==0.54a
-flask/bin/pip install flask-wtf==0.8.4
-flask/bin/pip install pytz==2013b
+flask/bin/pip install sqlalchemy==1.0.4
+flask/bin/pip install flask-sqlalchemy
+flask/bin/pip install sqlalchemy-migrate
+flask/bin/pip install pytz
 flask/bin/pip install flask-babel==0.8
 flask/bin/pip install flup
